@@ -5,7 +5,13 @@ import PostCard from "./PostCard"
 
 const NoContent = styled.div``
 
-const PostCardListWrapper = styled.div``
+const PostCardListWrapper = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+  row-gap: 2rem;
+`
 
 const PostCardList = ({ postList }) => {
   if (!postList.length) return <NoContent>No post available</NoContent>

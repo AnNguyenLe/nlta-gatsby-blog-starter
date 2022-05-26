@@ -6,7 +6,6 @@ import Footer from "./Footer"
 
 const PageWrapper = styled.div`
   margin: 0;
-  color: antiquewhite;
 `
 
 const Layout = ({ children }) => {
