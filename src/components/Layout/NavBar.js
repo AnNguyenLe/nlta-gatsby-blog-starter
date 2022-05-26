@@ -9,6 +9,7 @@ const NavWrapper = styled.nav`
   justify-content: space-around;
   align-items: center;
   padding: 0.5rem 0;
+  height: 3rem;
 `
 const LogoWrapper = styled(Link)``
 
@@ -21,6 +22,7 @@ const MenuWrapper = styled.ul`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding-inline-start: 0;
 `
 
 const MenuItem = styled(Link)`

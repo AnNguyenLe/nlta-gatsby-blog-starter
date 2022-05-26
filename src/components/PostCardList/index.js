@@ -11,6 +11,7 @@ const PostCardListWrapper = styled.div`
   grid-template-columns: auto auto auto;
   justify-content: space-between;
   row-gap: 2rem;
+  column-gap: 2%;
 `
 
 const PostCardList = ({ postList }) => {

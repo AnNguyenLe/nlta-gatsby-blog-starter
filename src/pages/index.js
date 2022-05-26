@@ -39,7 +39,7 @@ const HomePageContentWrapper = styled.div`
 `
 
 const HomePageContent = styled.div`
-  width: 70%;
+  width: 85%;
   display: flex;
   flex-direction: column;
   align-items: center;

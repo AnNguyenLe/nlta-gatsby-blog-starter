@@ -24,7 +24,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Lobster Two\:700i`, `Oxygen\:700`, `Playfair Display\:700i`],
+        fonts: [
+          `Lobster Two\:700i`,
+          `Oxygen\:700`,
+          `Playfair Display\:700i,500`,
+          `Indie Flower`,
+          `Roboto Slab\:600di`,
+        ],
         display: "swap",
       },
     },
