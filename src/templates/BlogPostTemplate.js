@@ -6,34 +6,93 @@ import styled from "styled-components"
 // import { GatsbyImage, getImage } from "gatsby-plugin-image"
 // import Banner from "../components/Banner"
 import { graphql } from "gatsby"
-// import { MDXRenderer } from "gatsby-plugin-mdx"
-const BlogPostTemplate = () => {
+import { MDXRenderer } from "gatsby-plugin-mdx"
+
+const Title = styled.div`
+  font-size: 3rem;
+  font-weight: bolder;
+`
+
+const BlogPostContentWrapper = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const BlogPostContent = styled(MDXRenderer)`
+  width: 80%;
+`
+
+const PostInfo = styled.div``
+
+const Category = styled.h2``
+
+const Date = styled.div`
+  color: gray;
+`
+const ReadTime = styled.div`
+  color: gray;
+`
+
+const BlogPostTemplate = ({ data }) => {
+  const {
+    currentPostInfo: {
+      body: postContent,
+      frontmatter: { category, date, readTime, title },
+    },
+    previousPostInfo,
+    nextPostInfo,
+  } = data
+
   return (
     <Layout>
-      <Seo />
-      This is the template
+      <Seo title={title} />
+      <BlogPostContentWrapper>
+        <PostInfo>
+          <Title>{title}</Title>
+          <Category>{category}</Category>
+          <Date>{date}</Date>
+          <ReadTime>{readTime} mins read</ReadTime>
+        </PostInfo>
+        <BlogPostContent>{postContent}</BlogPostContent>
+      </BlogPostContentWrapper>
     </Layout>
   )
 }
 
 export const query = graphql`
-  query BlogListTemporary {
-    allMdx(sort: { fields: frontmatter___date, order: DESC }) {
-      nodes {
-        frontmatter {
-          author
-          category
-          date(formatString: "MMM, Do YYYY")
-          readTime
-          slug
-          title
-        }
-        excerpt
+  query GetSinglePost(
+    $id: String
+    $previousPostId: String
+    $nextPostId: String
+  ) {
+    currentPostInfo: mdx(id: { eq: $id }) {
+      frontmatter {
+        title
+        category
+        date(formatString: "MMMM Do, YYYY")
+        readTime
+        slug
+      }
+      body
+    }
+
+    previousPostInfo: mdx(id: { eq: $previousPostId }) {
+      frontmatter {
+        title
+        readTime
+        slug
+      }
+    }
+
+    nextPostInfo: mdx(id: { eq: $nextPostId }) {
+      frontmatter {
+        title
+        readTime
+        slug
       }
     }
   }
 `
-
-const Wrapper = styled.section``
 
 export default BlogPostTemplate

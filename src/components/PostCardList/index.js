@@ -28,6 +28,7 @@ const PostCardList = ({ postList }) => {
           date,
           readTime,
           isFeaturedPost,
+          slug,
         } = frontmatter
 
         return (
@@ -41,6 +42,7 @@ const PostCardList = ({ postList }) => {
             date={date}
             readTime={readTime}
             isFeaturedPost={isFeaturedPost}
+            slug={slug}
           />
         )
       })}

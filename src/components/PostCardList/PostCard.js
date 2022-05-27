@@ -2,12 +2,17 @@ import React from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { BsDot } from "react-icons/bs"
+import { Link } from "gatsby"
 
 const PostCardWrapper = styled.div`
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
+`
+
+const CustomedLink = styled(Link)`
+  text-decoration: none;
 `
 
 const Thumbnail = styled(GatsbyImage)`
@@ -59,6 +64,7 @@ const Title = styled.div`
   max-height: 4rem;
   box-sizing: border-box;
   padding: 0.5rem 0.5rem 0.5rem 0;
+  color: black;
 `
 
 const Excerpt = styled.div`
@@ -90,14 +96,19 @@ const PostCard = ({
   date,
   readTime,
   isFeaturedPost,
+  slug,
 }) => {
   return (
     <PostCardWrapper>
-      <Thumbnail image={getImage(thumbnail)} alt={title} className="img" />
+      <CustomedLink to={`/${slug}`}>
+        <Thumbnail image={getImage(thumbnail)} alt={title} className="img" />
+      </CustomedLink>
       {isFeaturedPost && <FeaturedTag>Featured</FeaturedTag>}
       <Category>{category}</Category>
       <Content>
-        <Title>{title}</Title>
+        <CustomedLink to={`/${slug}`}>
+          <Title>{title}</Title>
+        </CustomedLink>
         <Excerpt>{excerpt}</Excerpt>
         <Author> by {author}</Author>
         <DateAndReadTime>
