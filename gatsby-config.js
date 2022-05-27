@@ -88,9 +88,6 @@ module.exports = {
                   nodes {
                     excerpt
                     html
-                    fields {
-                      slug
-                    }
                     frontmatter {
                       title
                       date
